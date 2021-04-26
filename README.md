@@ -17,3 +17,7 @@ Emoties (5):
 - woede
 - geluk
 - verliefdheid
+
+
+
+sjfbvdjbve
