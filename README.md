@@ -1,5 +1,5 @@
 # personal
-Schrijf het uit!
+Schrijf het uit!!!!
 Een soort psychologische website om gevoelens te verwerken.
 Gebruikers kunnen een brief schrijven naar een al dan niet bestaand persoon. In die brief of boodschap kunnen ze hun gevoelens uitschrijven.
 Bv als ze boos zijn op iemand, kunnen ze alles dat ze zouden willen zeggen uitschrijven. Dit helpt om emoties beter te verwerken.
