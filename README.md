@@ -9,7 +9,7 @@ Men kan bij het starten van de brief kiezen tussen verschillende emoties (of neu
 Bv. Als ze kiezen voor Woede, zal het design rood en hard zijn en de brief zal opbranden in de animatie
 Bv Als ze kiezen voor Verdriet, zal het deisgn blauwerig en grauw zijn en de brief zal zinken naar de bodem van de zee.
 Emoties (5):
-- neutraal
+- neutraal.
 - verdriet
 - woede
 - geluk
