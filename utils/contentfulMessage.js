@@ -1,7 +1,7 @@
 import Message from '../components/Message'
 
-const space = process.env.NEXT_PUBLIC_SPACE_ID
-const accessToken = process.env.NEXT_PUBLIC_ACCESS_TOKEN
+const space = process.env.NEXT_CONTENTFUL_SPACE_ID;
+const accessToken = process.env.NEXT_CONTENTFUL_ACCESS_TOKEN;
 
 const client = require('contentful').createClient({
   space: space,
