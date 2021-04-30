@@ -2,10 +2,37 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
   
-import { fetchEntries } from '../utils/contentfulMessage'
 import Message from '../components/Message'
 
+
+const space = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID;
+const accessToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN;
+
+const client = require('contentful').createClient({
+  space: space,
+  accessToken: accessToken,
+})
+
+export async function getStaticProps() {
+  const data = await client.getEntries({ content_type: 'title'});
+
+  return {
+    props: {
+      messages: data.items
+    },
+  }
+}
+
+// export async function getEntries() {
+//   const entries = await client.getEntries({content_type: 'title'})
+//   if (entries.items) return entries.items
+//   console.log(`Error getting Entries for ${contentType.name}.`)
+// }
+
+
+
 export default function Home({messages}) {
+  console.log(messages);
   return (
     <>
     <div className={styles.container}>
@@ -45,16 +72,17 @@ export default function Home({messages}) {
 
         {/* // inside your component markup, pull `messages` from props */}
         <div className="messages">
+          {console.log(messages)}
           {messages.map((message) => {
           
-            return <Message key={message.url} mood={message.mood} message={message.message} title={message.title} />
+            return <Message key={message.sys.id} mood={message.fields.mood} message={message.fields.message} title={message.fields.title} /> 
+           
           })}
         </div>
         <form name="test" data-netlify="true" method="POST">
           <p>
-            <label>Message
-              <textarea id="message" name="message"> </textarea>
-            </label>
+            <label>Message </label>
+              <textarea id="message" name="message"/> 
           </p>
           <button type="submit">Send</button>
 
@@ -73,18 +101,4 @@ export default function Home({messages}) {
 
 </>
   )
-}
-{/* // at the bottom of your component file */}
-
-export async function getStaticProps() {
-  const res = await fetchEntries()
-  const messages = await res.map((p) => {
-    return p.fields
-  })
-
-  return {
-    props: {
-      messages,
-    },
-  }
 }
