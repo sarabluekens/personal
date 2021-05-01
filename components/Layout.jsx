@@ -2,8 +2,7 @@ import styles from "./Layout.module.css"
 import Footer from "./Footer"
 import Navbar from "./Navbar"
 
-
-const Layout = ({children}) => {
+export default function Layout({children}) {
     return ( 
         
          <div className={styles.container}>
@@ -15,4 +14,3 @@ const Layout = ({children}) => {
      );
 }
  
-export default Layout;

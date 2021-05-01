@@ -1,6 +1,7 @@
 import Head from 'next/head'
 
-const Metadata = ({page}) => {
+export default function Metadata({page}) {
+    
     return ( 
         <Head>
             <title>Schrijf het uit!| {page}</title>
@@ -9,5 +10,3 @@ const Metadata = ({page}) => {
         </Head>
      );
 }
- 
-export default Metadata;

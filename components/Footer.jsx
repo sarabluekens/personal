@@ -1,7 +1,7 @@
 
 import styles from "./Footer.module.css"
 
-const Footer = () => {
+export default function Footer() {
     return ( 
         <footer  className={styles.footer}>
             <ul className={styles.footer__list}>
@@ -12,5 +12,3 @@ const Footer = () => {
         </footer>
      );
 }
- 
-export default Footer;

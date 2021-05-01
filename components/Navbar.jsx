@@ -3,7 +3,9 @@ import styles from "./Navbar.module.css";
 import Link from 'next/link'
 import Image from 'next/image'
 
-const Navbar = () => {
+
+export default function Navbar() {
+
     return ( 
         <nav className={styles.nav}>
             <ul className={styles.nav__list}>
@@ -15,5 +17,3 @@ const Navbar = () => {
         </nav>
      );
 }
- 
-export default Navbar;

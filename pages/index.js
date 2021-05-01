@@ -11,7 +11,7 @@ import Metadata from '../components/Metadata'
 
 const space = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID;
 const accessToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN;
-const url = process.env.NEXT_PUBLUC_NETLIFY_URL;
+
 
 const client = require('contentful').createClient({
   space: space,
@@ -23,6 +23,7 @@ export async function getStaticProps() {
 
   return {
     props: { messages : data.items},
+    revalidate: 1,
   }
 }
 
@@ -89,11 +90,9 @@ export default function Home({messages}) {
         <div className={styles.messages}>
           
           {messages.map((message) => {
-          
-            return <Message key={message.sys.id} mood={message.fields.mood} message={message.fields.message} title={message.fields.title} /> 
-
-           
-          })}
+            return (
+              <Message key={message.fields.slug} message={message}  /> 
+            )})}
         </div>
        
        
