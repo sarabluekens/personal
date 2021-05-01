@@ -36,6 +36,16 @@ export const getStaticPaths = async () => {
         'fields.slug': params.slug
     })
 
+    // redirect als de gevraagde url niet bestaat
+    if(items.length) {
+        return{
+            redirect: {
+                destination: "/404",
+                permanent: false
+            }
+        }
+    }
+
     return {
         // zet array om naar object
         props: { detail: items[0]},
@@ -44,6 +54,7 @@ export const getStaticPaths = async () => {
   }
 
 export default function readMessage ({detail}) {
+    // fallback, die een loading state toont tewijl next de data opvraagd en pagina genereerd
     if (!detail)  return <div>Working on it!...</div>
 
     return (
