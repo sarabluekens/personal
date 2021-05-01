@@ -37,7 +37,7 @@ export const getStaticPaths = async () => {
     })
 
     // redirect als de gevraagde url niet bestaat
-    if(items.length) {
+    if(!items.length) {
         return{
             redirect: {
                 destination: "/404",
