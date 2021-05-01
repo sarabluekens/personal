@@ -1,6 +1,6 @@
 // ------------------------------------------------------------
 
-import Detail from '../components/Detail';
+import Message from '../components/Message';
 
 // import Metadata from '../components/Metadata'
 // import { useRouter } from "next/router";
@@ -48,56 +48,16 @@ export const getStaticPaths = async () => {
 
     return {
         // zet array om naar object
-        props: { detail: items[0]},
+        props: { message: items[0]},
         revalidate: 1,
     }
   }
 
-export default function readMessage ({detail}) {
+export default function readMessage ({message}) {
     // fallback, die een loading state toont tewijl next de data opvraagd en pagina genereerd
-    if (!detail)  return <div>Working on it!...</div>
+    if (!message)  return <div>Working on it!...</div>
 
     return (
-        <Detail  detail={detail}/>
-
+        <Message key={message.fields.slug} message={message} link={"/"} /> 
     )
 }
-// const Message = ({ data }) => {
-//   const router = useRouter();
-//   if (router.isFallback) {
-//     return <p>Loading..</p>;
-//   }
-
-
-//   return ( 
-//     <>
-//     <Metadata page="Id"/>
-//     <div>
-//         <p>test</p>
-//         {console.log(data)}
-//     </div>
-//     </>
-//  );
-// }
-
-
-// export default Message;
-
-
-// TOTO HEIR HAD IK AL STAAT, ERONDER WAS AL IN COMMENTAAR
-// ------------------------------------------------------------
-
-//      console.log(data.sys)
-   
-//      // logs the field with ID title
-//      console.log(data.fields.title)
-
-//      return {
-//         paths: data.map((message) => ({
-//           params: {
-//             id: message.id,
-//           },
-//         })),
-//         fallback: true,
-//       };
-// };

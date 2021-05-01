@@ -2,7 +2,7 @@
 import Link from "next/link";
 import styles from "./Message.module.css"
 
-export default function Message ({message}) {
+export default function Message ({message, link}) {
   const {title, letter, mood, slug} = message.fields;
 
   return (
@@ -11,7 +11,7 @@ export default function Message ({message}) {
         <h1 className={slug}>{title}</h1>
         <p>Message:{letter}</p>
         <p>I feel:{mood}</p>
-        <Link href={"/" + slug}>{title}</Link>
+        <Link href={link}>{title}</Link>
    
     </div>
   )

@@ -62,15 +62,8 @@ export default function Home({messages}) {
         Schrijf hier uit wat op je hart ligt, maar je niet kan zeggen.
         </p>
 
-        {/* hier komt het formulier */}
-        <form name="test" data-netlify="true" method="POST">
-          <p>
-            <label>Message </label>
-              <textarea id="message" name="message"/> 
-          </p>
-          <button type="submit">Send</button>
+       {/* hier stond het form te beginnen met section */}
 
-        </form>
 
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
@@ -91,7 +84,7 @@ export default function Home({messages}) {
           
           {messages.map((message) => {
             return (
-              <Message key={message.fields.slug} message={message}  /> 
+              <Message key={message.fields.slug} message={message} link={"/" + message.fields.slug} /> 
             )})}
         </div>
        
