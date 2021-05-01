@@ -1,33 +1,34 @@
-import styles from "./AddComment.module.css";
+// import styles from "./Form.module.css";
 
-const AddComment = ({ onSubmit }) => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const data = {
-      name: e.target.name.value,
-      content: e.target.content.value,
-    };
-    e.target.reset();
-    onSubmit(data);
-  };
+// const Form = ({ onSubmit }) => {
+//     const handleSubmit = (e) => {
+//         console.log(e.target.title.value);
+//         e.preventDefault();
+//         const data = {
+//           title: e.target.title.value,
+//           message: e.target.message.value,
+          
+//         };
+//         e.target.reset();
+//         onSubmit(data);
+//   };
+//   return (
+//     <section>
+//           <h1> Bericht toevoegen</h1>
+//           <form onSubmit={(e) => handleSubmit(e)} className={styles.form}>
 
-  return (
-    <section>
-          <h1> Bericht toevoegen</h1>
-          <form onSubmit={(e) => handleSubmit(e)} className={styles.form}>
+//             <label htmlFor="title">Titel</label>
+//                 <input  id="title" type="text" name="title" />
+            
 
-            <label>Titel
-              <input  type="text" name="title"/>
-            </label>
+//             <label htmlFor="message">Message </label>
+//                 <textarea id="title" id="message" name="message" /> 
+//             <input type="submit" value="Send" />
+//           </form>
+//         </section>
 
-            <label>Message </label>
-                <textarea id="message" name="message"/> 
+//   );
+// };
 
-            <input type="submit" value="Send" />
-          </form>
-        </section>
+// export default Form;
 
-  );
-};
-
-export default AddComment;
