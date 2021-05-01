@@ -13,3 +13,8 @@
   .nav__list__item {
     margin: 0 1rem;
   }
+
+  .nav__list__item:active {
+    font-size: 3rem;
+    text-decoration: underline;
+  }

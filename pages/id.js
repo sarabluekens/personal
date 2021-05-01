@@ -1,3 +1,4 @@
+import Metadata from '../components/Metadata'
 // import { useRouter } from "next/router";
 
 // const Message = ({ data }) => {
@@ -33,9 +34,12 @@
 
 const id = () => {
     return ( 
+        <>
+        <Metadata page="Id"/>
         <div>
             <p>Test</p>
         </div>
+        </>
      );
 }
  
