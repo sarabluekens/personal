@@ -61,3 +61,8 @@
 .love{
   background-color: rgb(247, 194, 238);
 }
+
+.form {
+ width: 100vw;
+ margin: 0 auto;
+}
