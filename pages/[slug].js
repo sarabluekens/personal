@@ -2,6 +2,8 @@
 
 import Message from '../components/Message';
 import styles from '../styles/detail.module.css'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 // import Metadata from '../components/Metadata'
 // import { useRouter } from "next/router";
 
@@ -58,6 +60,7 @@ export default function readMessage ({message}) {
     if (!message)  
     return (
     <>
+     <Navbar/>
         <div>Working on it!...</div>
         {console.log("maken")}
     </>
@@ -71,8 +74,13 @@ export default function readMessage ({message}) {
     let classLove = styles.love;
    
     return (
+        <div className={styles.detail}>
+        <Navbar/>
+        <h2 className={styles.detail__title}>Uw bericht</h2>
         <section  className={colorScheme === "happy" ? classHappy : colorScheme === "sad" ? classSad : colorScheme === "love" ? classLove : colorScheme ==="angry" ? classAngry : classNeutral }>
             <Message key={message.fields.slug} message={message} link={"/"} /> 
         </section>
+        <Footer/>
+        </div>
     )
 }
