@@ -61,3 +61,17 @@
   font-size: 1.5rem;
   margin: 1rem;
 }
+
+.form__button:active{
+  transform: translateY(4px);
+}
+.wegwijzer {
+  background-color: rgb(255, 245, 236);
+  border-radius: 1rem;
+  padding: .5rem;
+  margin: 1rem;
+}
+
+.link {
+  font-size: 2rem;
+}

@@ -155,7 +155,7 @@ const submit = (e) => {
 
         {/* FORMbackup */}
        <section className={styles.form}>
-          <h1 className={styles.title}> Schrijf je brief</h1>
+          <h1 className={styles.title}> Schrijf hier wat je kwijt wilt</h1>
           
           <form onSubmit={submit} className={styles.form} >
 
@@ -167,9 +167,9 @@ const submit = (e) => {
                     <input className={styles.form__button} type="submit" value="Van je af smijten"  />
             <label className={styles.hidden} name="kleur">{colorScheme}</label>
           </form>
-          <div className={styles.grid}>
+          <div className={styles.wegwijzer}>
             <p>Wil je jouw boodschap toch met iemand delen? Kopieer dan volgende link:</p>
-            <h2 onChange={(url) => setUrl(url)}> {url} </h2>
+            <h2 className={styles.link} onChange={(url) => setUrl(url)}> {url} </h2>
         </div>
         </section>
  
