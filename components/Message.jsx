@@ -7,7 +7,7 @@ export default function Message ({message, link}) {
 
   return (
     <div className="message">
-        {console.log(slug)}
+        {/* {console.log(slug)} */}
         <h1 className={slug}>{title}</h1>
         <p>Message:{letter}</p>
         <p>I feel:{mood}</p>
