@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-  
+import { useEffect} from 'react'
 import Message from '../components/Message'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
@@ -10,8 +10,13 @@ import MoodButtons from '../components/MoodButtons'
 import Metadata from '../components/Metadata'
 import { useState } from "react";
 import { createClient } from 'contentful-management'
+import { useRouter} from 'next/router'
+import Link from "next/link";
+
 
 import {v4 as uuidv4} from 'uuid';
+import { bool } from 'prop-types'
+import Url from '../components/Url'
 
 
 
@@ -35,10 +40,64 @@ export async function getStaticProps() {
   }
 }
 
+// ---------------------------ShowLink------------------------------------
+
+
+
+//--------------------------MoodList--------------------------------------------
+const moods = [
+  {
+      label : "happy",
+      description : " Gelukkig ",
+      index : 0,
+      url: "/img/happyLogo3.svg"
+      
+  },
+  {
+      label : "sad",
+      description : " Verdrietig ",
+      index : 1,
+      url: "/img/sadLogo3.svg"
+  },
+  {
+      label : "angry",
+      description : " Boos ",
+      index : 2,
+      url: "/img/angryLogo3.svg"
+  },
+  {
+      label : "love",
+      description : " Verliefd ",
+      index : 3,
+      url: "/img/loveLogo3.svg"
+  },
+  {
+    label : "neutral",
+    description : " Neutraal ",
+    index : 4,
+    url: "/img/neutraalLogo3.svg"
+}
+]
+
+
+
+
+
+export default function Home({messages}) {
+ const [mood, setMood] = useState("neutral"); 
+ const [url, setUrl] = useState("");
+  const router = useRouter();
+//----------------------------CSS classes toggle------------------------------------------
+
+
 // ---------------------------CreateEntry------------------------------------
 
+let myuuid = uuidv4();
+// let showLink = false;
+
 const submit = (e) => {
-  let myuuid = uuidv4();
+
+  // console.log(myuuid);
   const client = createClient({
     accessToken: 'CFPAT-6PcoIiZR6-99kWbq5xZBHLpNBL64MZyOZjmIS_LI-NE'
   })
@@ -63,48 +122,19 @@ const submit = (e) => {
       }))
       .then((entry) => entry.publish())
 
+
+      .then((entry) => {
+        const showUrl = window.location.href + myuuid
+        setUrl(showUrl)
+      })
+
+
       .catch(console.error)
-      console.log(e.target.lastChild.innerHTML);
+      console.log(myuuid);
 
 }
-//--------------------------MoodList--------------------------------------------
 
-const moods = [
-  {
-      label : "happy",
-      description : " Gelukkig ",
-      index : 0
-      
-  },
-  {
-      label : "sad",
-      description : " Verdrietig ",
-      index : 1
-  },
-  {
-      label : "angry",
-      description : " Boos ",
-      index : 2
-  },
-  {
-      label : "love",
-      description : " Verliefd ",
-      index : 3
-  },
-  {
-    label : "neutral",
-    description : " Neutraal ",
-    index : 4
-}
-]
-
-
-
-export default function Home({messages}) {
- const [mood, setMood] = useState("neutral"); 
-
-//----------------------------CSS classes toggle------------------------------------------
-
+//kdsdvndsljnzrljnbs   submit
  let colorScheme = mood;
 
  let classHappy = styles.happy;
@@ -116,25 +146,24 @@ export default function Home({messages}) {
   return (
     <>
       <Metadata page="Home"/>
-
+      <Navbar/>
         <main className={colorScheme === "happy" ? classHappy : colorScheme === "sad" ? classSad : colorScheme === "love" ? classLove : colorScheme ==="angry" ? classAngry : classNeutral }>
 
         <Header/>
        
-       <MoodButtons list={moods} value={mood} onRadioChange={(value) => setMood(value)}/>
+       <MoodButtons className={styles.buttons} list={moods} value={mood} onRadioChange={(value) => setMood(value)}/>
 
         {/* FORMbackup */}
        <section>
-          <h1> Bericht toevoegen</h1>
-          <form onSubmit={submit} className={styles.form}>
+          <h1 className={styles.title}> Schrijf je brief</h1>
+          <form onSubmit={submit} className={styles.form} >
 
             <label htmlFor="title">Titel</label>
                 <input id="title" type="text" name="title" />
             
             <label htmlFor="message">Schrijf het uit! </label>
                 <textarea id="title" id="message" name="message" /> 
-            <input type="submit" value="Send" />
-
+                    <input type="submit" value="Send"  />
             <label className="hidden" name="kleur">{colorScheme}</label>
           </form>
         </section>
@@ -155,20 +184,11 @@ export default function Home({messages}) {
           </a>
 
         </div>
-
-        <div className={styles.messages}>
-          
-          {messages.map((message) => {
-            return (
-              <Message key={message.fields.slug} message={message} link={"/" + message.fields.slug} /> 
-            )})}
-        </div>
-       
-       
+        {/* <Url showLink={showLink} myuuid={myuuid} onLinkChange={(myuuid) => setShowLink(myuuid)} /> */}
+        <p onChange={(url) => setUrl(url)}> {url} </p>
+        
       </main>
-
-
-
+      <Footer/>
 </>
   )
 }

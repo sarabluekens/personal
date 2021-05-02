@@ -3,12 +3,13 @@ import PropTypes from "prop-types";
 import styles from "./MoodButton.module.css";
 import Image from 'next/image';
 
-const MoodButtonOption = ({description, onRadioChange, index}) => {
+const MoodButtonOption = ({onRadioChange, index, url}) => {
     return (  
         <>
-            <input type="radio" id={index} name="mood" value={index} onChange={(e) => onRadioChange(e.target.value) }/>
-            <label className ={styles.formLabel} htmlFor={index}>
-            <Image src="/img/logo.png" width="100" height="100"/>
+            <input className={styles.radioButton} type="radio" id={index} name="mood" value={index} onChange={(e) => onRadioChange(e.target.value) }/>
+            <label className ={styles.radioLabel} htmlFor={index}>
+            <Image className={styles.radioImg} src={url} width="300" height="300"/>
+            {console.log(url)}
             </label><br/>
         </>
     );

@@ -5,14 +5,16 @@ import styles from "./MoodButton.module.css";
 
 
 const MoodButtons = ({list, onRadioChange}) => {
-    return (  
+    return ( 
+        <div>
         <div className ={styles.formItem}>
-        <label htmlFor="mood" > Hoe voel je je?</label> <br/>
+        <label className={styles.title} htmlFor="mood" > Hoe voel je je:</label>
            {list.map(item => 
-                <MoodButtonOption key={item.index} label={item.label}  index={item.label} description={item.description} onRadioChange={onRadioChange}/>
+                <MoodButtonOption key={item.index} label={item.label} url={item.url} index={item.label} description={item.description} onRadioChange={onRadioChange}/>
 
             )}
         
+        </div>
         </div>
     );
 }

@@ -1,7 +1,7 @@
 // ------------------------------------------------------------
 
-import Message from '../components/Message';
-import styles from '../styles/detail.module.css'
+import Message from '../../components/Message';
+import styles from '../../styles/detail.module.css'
 // import Metadata from '../components/Metadata'
 // import { useRouter } from "next/router";
 
