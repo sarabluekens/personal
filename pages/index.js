@@ -77,7 +77,9 @@ export default function Home({messages}) {
         Daarom bied ik deze pagina aan in de hoop het iets gemakkelijker te maken deze gevoelens te verwerken.
         Schrijf hier uit wat op je hart ligt, maar je niet kan zeggen.
        </p>
-        {/* FOOOOOOOOOOOOOOOOOOOOOOOORM */}
+       
+
+        {/* FORMbackup */}
        <section>
           <h1> Bericht toevoegen</h1>
           <form onSubmit={submit} className={styles.form}>
@@ -85,14 +87,13 @@ export default function Home({messages}) {
             <label htmlFor="title">Titel</label>
                 <input id="title" type="text" name="title" />
             
-
-            <label htmlFor="message">Message </label>
+            <label htmlFor="message">Schrijf het uit! </label>
                 <textarea id="title" id="message" name="message" /> 
             <input type="submit" value="Send" />
           </form>
         </section>
 
-        {/* FOOOOOOOOOOOOOOOOOOOOOOOORM */}
+        {/* FORMbackup */}
 
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
