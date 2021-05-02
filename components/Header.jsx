@@ -9,7 +9,7 @@ const Header = () => {
         <section className={styles.header}>
             <h1 className={styles.header__title}> Schrijf het uit! </h1>
             <div className={styles.flex}>
-                <Image className={styles.header__img} src="/img/pluim.svg" width="400" height="400"/>
+                <Image className={styles.header__img} src="/img/pluim.png" width="400" height="400"/>
 
                 <p className={styles.header__description}>
                     De wereld staat op zijn kop. In deze geïsoleerde tijden was mentale gezondheid nog nooit zo belangrijk! 
