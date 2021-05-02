@@ -8,7 +8,7 @@ const MoodButtonOption = ({onRadioChange, index, url}) => {
         <>
             <input className={styles.radioButton} type="radio" id={index} name="mood" value={index} onChange={(e) => onRadioChange(e.target.value) }/>
             <label className ={styles.radioLabel} htmlFor={index}>
-            <Image className={styles.radioImg} src={url} width="300" height="300"/>
+            <Image className={styles.radioImg} src={url} width="800" height="400"/>
             {console.log(url)}
             </label><br/>
         </>
