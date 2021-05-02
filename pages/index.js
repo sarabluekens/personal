@@ -50,32 +50,32 @@ const moods = [
       label : "happy",
       description : " Gelukkig ",
       index : 0,
-      url: "/img/happyLogo3.svg"
+      url: "/img/happyLogo3.png"
       
   },
   {
       label : "sad",
       description : " Verdrietig ",
       index : 1,
-      url: "/img/sadLogo3.svg"
+      url: "/img/sadLogo3.png"
   },
   {
       label : "angry",
       description : " Boos ",
       index : 2,
-      url: "/img/angryLogo3.svg"
+      url: "/img/angryLogo3.png"
   },
   {
       label : "love",
       description : " Verliefd ",
       index : 3,
-      url: "/img/loveLogo3.svg"
+      url: "/img/loveLogo3.png"
   },
   {
     label : "neutral",
     description : " Neutraal ",
     index : 4,
-    url: "/img/neutraalLogo3.svg"
+    url: "/img/neutraalLogo3.png"
 }
 ]
 
@@ -154,15 +154,15 @@ const submit = (e) => {
        <MoodButtons className={styles.buttons} list={moods} value={mood} onRadioChange={(value) => setMood(value)}/>
 
         {/* FORMbackup */}
-       <section>
+       <section className={styles.form}>
           <h1 className={styles.title}> Schrijf je brief</h1>
           <form onSubmit={submit} className={styles.form} >
 
-            <label htmlFor="title">Titel</label>
-                <input id="title" type="text" name="title" />
+            {/* <label htmlFor="title">Titel</label> */}
+                <input id="title" type="text" name="title" placeholder="Titel van mijn brief" />
             
-            <label htmlFor="message">Schrijf het uit! </label>
-                <textarea id="title" id="message" name="message" /> 
+            {/* <label htmlFor="message">Schrijf het uit! </label> */}
+                <textarea id="title" id="message" name="message" placeholder="hier uw boodschap" /> 
                     <input type="submit" value="Send"  />
             <label className="hidden" name="kleur">{colorScheme}</label>
           </form>
