@@ -1,16 +1,33 @@
 .neutral{
-    background-color: white;
-  }
-  
-  .angry{
-    background-color: rgb(2, 2, 2);
-  }
-  .happy{
-    background-color: rgb(143, 165, 45);
-  }
-  .sad{
-    background-color: #6163e2;
-  }
-  .love{
-    background-color: rgb(207, 64, 64);
-  }
+  background-color: rgb(235, 227, 227);
+  font-family: 'New Tegomin';
+}
+
+.angry{
+  background-color: rgb(221, 179, 179);
+  font-family: 'Annie Use Your Telescope';
+}
+.happy{
+  background-color: rgb(235, 233, 159);
+  font-family: 'Amatic SC';
+}
+.sad{
+  background-color: #b1d2f1;
+  font-family: 'Caveat';
+}
+.love{
+  background-color: rgb(247, 194, 238);
+  font-family: 'News Cycle';
+}
+
+.detail {
+  height: 100vh;
+}
+
+.detail__title {
+  color: rgb(165, 108, 42);
+  font-size: 3rem;
+  text-align: center;
+  font-family: 'News Cycle';
+}
+

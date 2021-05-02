@@ -156,36 +156,27 @@ const submit = (e) => {
         {/* FORMbackup */}
        <section className={styles.form}>
           <h1 className={styles.title}> Schrijf je brief</h1>
+          
           <form onSubmit={submit} className={styles.form} >
 
-            {/* <label htmlFor="title">Titel</label> */}
-                <input id="title" type="text" name="title" placeholder="Titel van mijn brief" />
+            <label htmlFor="title">Titel</label>
+                <input className={styles.form__inputfield__title} id="title" type="text" name="title" placeholder="Titel van mijn brief"required />
             
-            {/* <label htmlFor="message">Schrijf het uit! </label> */}
-                <textarea id="title" id="message" name="message" placeholder="hier uw boodschap" /> 
-                    <input type="submit" value="Send"  />
-            <label className="hidden" name="kleur">{colorScheme}</label>
+            <label htmlFor="message">Schrijf het uit! </label>
+                <textarea className={styles.form__inputfield__text}  id="title" id="message" name="message" rows="20" cols="50" placeholder="hier uw boodschap"required /> 
+                    <input className={styles.form__button} type="submit" value="Van je af smijten"  />
+            <label className={styles.hidden} name="kleur">{colorScheme}</label>
           </form>
+          <div className={styles.grid}>
+            <p>Wil je jouw boodschap toch met iemand delen? Kopieer dan volgende link:</p>
+            <h2 onChange={(url) => setUrl(url)}> {url} </h2>
+        </div>
         </section>
-
+ 
         {/* FORMbackup */}
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            
-            <p>Wil je jouw boodschap toch met iemand delen? Klik dan hier</p>
-            <h2>Delen &rarr;</h2>
-          </a>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            
-            <p>Wil je je boodschap beveiligen? </p>
-            <h2>Verbergen &rarr;</h2>
-          </a>
-
-        </div>
         {/* <Url showLink={showLink} myuuid={myuuid} onLinkChange={(myuuid) => setShowLink(myuuid)} /> */}
-        <p onChange={(url) => setUrl(url)}> {url} </p>
         
       </main>
       <Footer/>
