@@ -7,21 +7,21 @@ import Footer from '../components/Footer'
 // import Metadata from '../components/Metadata'
 // import { useRouter } from "next/router";
 
-const space = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID;
+const space = '7jittotgbw6t';
 const accessToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN;
 
 
 const client = require('contentful').createClient({
-  space: space,
-  accessToken: accessToken,
+    space: space,
+    accessToken: accessToken,
 })
 
 export const getStaticPaths = async () => {
-    const data = await client.getEntries({ content_type: 'title'})
+    const data = await client.getEntries({ content_type: 'message' })
 
     const paths = data.items.map(item => {
-        return {
-            params : {slug: item.fields.slug }
+        return {
+            params: { slug: item.fields.slug }
         }
     })
 
@@ -29,18 +29,18 @@ export const getStaticPaths = async () => {
         paths,
         fallback: true,
     }
- }
- 
- export async function getStaticProps({params}) {
+}
+
+export async function getStaticProps({ params }) {
     //  geeft een array terug van 1 element!
-    const {items} = await client.getEntries({ 
-        content_type: 'title', 
+    const { items } = await client.getEntries({
+        content_type: 'message',
         'fields.slug': params.slug
     })
 
     // redirect als de gevraagde url niet bestaat
-    if(!items.length) {
-        return{
+    if (!items.length) {
+        return {
             redirect: {
                 destination: "/404",
                 permanent: false
@@ -50,21 +50,21 @@ export const getStaticPaths = async () => {
 
     return {
         // zet array om naar object
-        props: { message: items[0]},
+        props: { message: items[0] },
         revalidate: 1,
     }
-  }
+}
 
-export default function readMessage ({message}) {
+export default function readMessage({ message }) {
     // fallback, die een loading state toont tewijl next de data opvraagd en pagina genereerd
-    if (!message)  
-    return (
-    <>
-     <Navbar/>
-        <div>Working on it!...</div>
-        {console.log("maken")}
-    </>
-    )
+    if (!message)
+        return (
+            <>
+                <Navbar />
+                <div>Working on it!...</div>
+                {console.log("maken")}
+            </>
+        )
     let colorScheme = message.fields.mood;
 
     let classHappy = styles.happy;
@@ -72,15 +72,15 @@ export default function readMessage ({message}) {
     let classNeutral = styles.neutral;
     let classAngry = styles.angry;
     let classLove = styles.love;
-   
+
     return (
         <div className={styles.detail}>
-        <Navbar/>
-        <h2 className={styles.detail__title}>Uw bericht</h2>
-        <section  className={colorScheme === "happy" ? classHappy : colorScheme === "sad" ? classSad : colorScheme === "love" ? classLove : colorScheme ==="angry" ? classAngry : classNeutral }>
-            <Message key={message.fields.slug} message={message} link={"/"} /> 
-        </section>
-        <Footer/>
+            <Navbar />
+            <h2 className={styles.detail__title}>Uw bericht</h2>
+            <section className={colorScheme === "happy" ? classHappy : colorScheme === "sad" ? classSad : colorScheme === "love" ? classLove : colorScheme === "angry" ? classAngry : classNeutral}>
+                <Message key={message.fields.slug} message={message} link={"/"} />
+            </section>
+            <Footer />
         </div>
     )
 }
